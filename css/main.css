@@ -1,0 +1,94 @@
+body {
+    background: #000;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0
+}
+
+/* common kaleidoscope styles */
+.kal_main {
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+    margin: auto
+}
+
+.kal_cont {
+    width: 140%;
+    height: 140%;
+    left: -20%;
+    top: -20%;
+    position: relative;
+    margin: auto
+}
+
+.kal_cont .ks {
+    transform-origin: right top;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.kal_cont .ksc {
+    height: 100%;
+    width: 100%;
+    transform: rotate(30deg);
+    position: relative;
+    transform-origin: left top;
+    left: 100%;
+    top: 0;
+    background-image: url(../patterns/pic.jpg)
+}
+
+/* styles for each sector */
+.kal_cont .s1 {
+    transform: rotate(-30deg);
+}
+
+.kal_cont .s2 {
+    transform: rotate(30deg) matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.kal_cont .s3 {
+    transform: rotate(30deg);
+}
+
+.kal_cont .s4 {
+    transform: rotate(90deg) matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.kal_cont .s5 {
+    transform: rotate(90deg);
+}
+
+.kal_cont .s6 {
+    transform: rotate(150deg) matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.kal_cont .s7 {
+    transform: rotate(150deg);
+}
+
+.kal_cont .s8 {
+    transform: rotate(210deg) matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.kal_cont .s9 {
+    transform: rotate(210deg);
+}
+
+.kal_cont .s10 {
+    transform: rotate(270deg) matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.kal_cont .s11 {
+    transform: rotate(270deg);
+}
+
+.kal_cont .s12 {
+    transform: rotate(330deg) matrix(-1, 0, 0, 1, 0, 0);
+}
