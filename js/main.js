@@ -1,13 +1,15 @@
 $(document).ready(function() {
-    $(".kal_cont").each(function(i){
-        $(this).mousemove(function(e) {
-            $(this).find(".ksc").each(function(i){
-                $(this).css({backgroundPosition: e.pageX+"px "+e.pageY+"px"});
-            });
-        });
+
+    $(this).mousemove(function(e) {
+        $(".kal_cont .ksc").css({backgroundPosition: e.pageX+"px "+e.pageY+"px"});
     });
 
     resizeCanvas();
+    K.changeBackground($('#path').val());
+
+    $('#path').on('change', function() {
+        K.changeBackground($(this).val());
+    });
 
     $(window).on('resize', function() {
         resizeCanvas();
@@ -17,4 +19,11 @@ $(document).ready(function() {
 function resizeCanvas () {
     var maxHeight = $(window).height();
     $('.kal_main').height(maxHeight);
+}
+
+var K = {};
+
+
+K.changeBackground = function(path) {
+    $('.kal_cont .ksc').css({"background-image": 'url('+path+')'});
 }
