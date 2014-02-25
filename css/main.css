@@ -64,8 +64,10 @@ styles for each sector */
 #controls {
     position: absolute;
     right: 0px;
-    top: 0px;
+    bottom: 0px;
     background: rgba(255, 255, 255, .8);
     z-index: 99;
-    padding: 10px;
+    padding: 0px;
 }
+
+#controls #path {width: 300px;}
