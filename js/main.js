@@ -1,33 +1,72 @@
-$(document).ready(function() {
+/*
 
-    $(this).on('mousemove', function(e) {
-        $(".kal_cont .ksc").css({backgroundPosition: e.pageX+"px "+e.pageY+"px"});
-    });
+@TODO: Save settings to cookies
+@TODO: Switch to angular?
+@TODO: Add bootstrap
+@TODO: Add ability to hide control panel
+@TODO: Format control panel properly, add labels
 
-    var $path = $('#path'),
-        $slices = $('#slices');
+ */
 
-    K.resizeCanvas();
-    K.changeBackground($path.val());
-    K.generateLayout($slices.val());
+(function($) {
 
-    $path.on('change', function() {
-        K.changeBackground($(this).val());
-    });
+    $(document).ready(function() {
 
-    $slices.on('change', function() {
-        K.generateLayout($(this).val());
-    });
+        $(this).on('mousemove', function(e)
+        {
+            if (K.animated === false)
+                $(".kal_cont .ksc").css({backgroundPosition: e.pageX+"px "+e.pageY+"px"});
+        });
 
-    $(window).on('resize', function() {
+        var $path = $('#path'),
+            $slices = $('#slices');
+
         K.resizeCanvas();
+        K.generateLayout($slices.val());
+
+        $path.on('change', function() {
+            K.changeBackground($(this).val());
+        });
+
+        $slices.on('change', function() {
+            K.generateLayout($(this).val());
+        });
+
+        $(window).on('resize', function() {
+            K.resizeCanvas();
+        });
+
+        // Click to animate, click again to stop
+        $(this).on('click', function(e) {
+
+            if (K.animated === false) {
+                K.animated = true;
+                $(".kal_cont .ksc").animate({
+                    'backgroundPositionX': '+=2500',
+                    'backgroundPositionY': '+=500'
+                }, {
+                    duration: 60000,
+                    easing: 'linear',
+                    done: function() {
+                        K.animated = false;
+                    }
+                });
+            } else {
+                $(".kal_cont .ksc").stop();
+                K.animated = false;
+            }
+        });
+
     });
-});
+
+})(jQuery);
 
 var K = {};
+K.animated = false;
 
 // Resize kaleidoscope to fit the window
-K.resizeCanvas = function () {
+K.resizeCanvas = function ()
+{
     var maxHeight = $(window).height();
     $('.kal_main').height(maxHeight);
 }
