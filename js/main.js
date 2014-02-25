@@ -36,25 +36,11 @@
             K.resizeCanvas();
         });
 
+        K.startAnimation();
+
         // Click to animate, click again to stop
         $(this).on('click', function(e) {
-
-            if (K.animated === false) {
-                K.animated = true;
-                $(".kal_cont .ksc").animate({
-                    'backgroundPositionX': '+=2500',
-                    'backgroundPositionY': '+=500'
-                }, {
-                    duration: 60000,
-                    easing: 'linear',
-                    done: function() {
-                        K.animated = false;
-                    }
-                });
-            } else {
-                $(".kal_cont .ksc").stop();
-                K.animated = false;
-            }
+            K.toggleAnimation();
         });
 
     });
@@ -63,6 +49,37 @@
 
 var K = {};
 K.animated = false;
+
+K.toggleAnimation = function()
+{
+    if (K.animated === false) {
+        K.startAnimation();
+    } else {
+        K.stopAnimation();
+    }
+}
+
+K.startAnimation = function()
+{
+    if (K.animated === false) {
+        K.animated = true;
+        $(".kal_cont .ksc").animate({
+            'backgroundPositionY': '+=2500'
+        }, {
+            duration: 60000,
+            easing: 'linear',
+            done: function() {
+                K.enableAnimation();
+                K.animated = false;
+            }
+        });
+    }
+}
+
+K.stopAnimation = function() {
+    $(".kal_cont .ksc").stop();
+    K.animated = false;
+}
 
 // Resize kaleidoscope to fit the window
 K.resizeCanvas = function ()
