@@ -4,12 +4,19 @@ $(document).ready(function() {
         $(".kal_cont .ksc").css({backgroundPosition: e.pageX+"px "+e.pageY+"px"});
     });
 
-    K.resizeCanvas();
-    K.changeBackground($('#path').val());
-    K.generateLayout(20);
+    var $path = $('#path'),
+        $slices = $('#slices');
 
-    $('#path').on('change', function() {
+    K.resizeCanvas();
+    K.changeBackground($path.val());
+    K.generateLayout($slices.val());
+
+    $path.on('change', function() {
         K.changeBackground($(this).val());
+    });
+
+    $slices.on('change', function() {
+        K.generateLayout($(this).val());
     });
 
     $(window).on('resize', function() {

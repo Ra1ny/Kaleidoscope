@@ -25,11 +25,11 @@ body {
 }
 
 .kal_cont .ksc, .kal_cont .ks {
-     /*Anti-aliasing for Chrome: http://stackoverflow.com/questions/5078186/webkit-transform-rotate-pixelated-images-in-chrome */
+    /*Anti-aliasing for Chrome: http://stackoverflow.com/questions/5078186/webkit-transform-rotate-pixelated-images-in-chrome */
     /*-webkit-backface-visibility: hidden;*/
 
     -webkit-transform-style: preserve-3d;
-    -webkit-transform: rotateZ(2deg);
+    /*-webkit-transform: rotateZ(2deg);*/
 }
 
 .kal_cont .ksc {
@@ -38,7 +38,7 @@ body {
     position: relative;
     transform-origin: left top;
     left: 100%; top: 0;
-    background-image: url(../patterns/pic.jpg)
+    background-image: url(../patterns/pic2.jpg)
 }
 
 /*************** Control Panel *******************/
