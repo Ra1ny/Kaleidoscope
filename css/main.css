@@ -45,7 +45,7 @@ body {
 #controls {
     position: absolute;
     right: 0; bottom: 0;
-    /*background: rgba(255, 255, 255, .8);*/
+    background: rgba(255, 255, 255, .8);
     z-index: 99; padding: 0;
 }
 
