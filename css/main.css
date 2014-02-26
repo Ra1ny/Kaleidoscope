@@ -36,13 +36,24 @@ body {
     position: relative;
     transform-origin: left top;
     left: 100%; top: 0;
-    background-image: url(../patterns/pic2.jpg)
+    background-image: url(../patterns/pic2.jpg);
+    background-position-x: 1300px;
 }
 
 /*************** Control Panel *******************/
 #controls {
     position: absolute;
     right: 0; bottom: 0;
-    z-index: 99; padding: 15px 0 0;
+    z-index: 50; padding: 15px 0 0;
     background: rgba(255, 255, 255, .9);
+}
+
+#toggleControls {
+    position: absolute;
+    right: 0; top: 0;
+    font-weight: bold;
+    background: #e8e8e8;
+    padding: 0 5px;
+    border-radius: 0 0 0 4px;
+    cursor: pointer; z-index: 51;
 }
