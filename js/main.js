@@ -24,11 +24,13 @@
             $slices = $('#slices');
 
         $path.on('change', function() {
-            K.changeBackground($(this).val());
+            K.changeBackground($path.val());
         });
 
         $slices.on('change', function() {
-            K.generateLayout($(this).val());
+            K.generateLayout($slices.val());
+            K.changeBackground($path.val());
+            K.restartAnimation();
         });
 
         $(window).on('resize', function() {
@@ -40,8 +42,13 @@
         });
 
         // Click to animate, click again to stop
-        $('#container').on('click', function(e) {
+        $('#kContainer').on('click', function(e) {
             K.toggleAnimation();
+        });
+
+        $('#reverse').on('click', function() {
+            K.toggleDirection();
+            K.restartAnimation();
         });
 
         K.init();
@@ -55,14 +62,14 @@ var K = {
     animated: false,
     animation: {
         direction : '+=',
-        speed : '+=300000'
+        speed : '300000'
     },
 
     init : function()
     {
         this.resizeCanvas();
         this.generateLayout(14);
-        this.startAnimation();
+        this.restartAnimation();
     },
 
     toggleDirection: function()
@@ -77,20 +84,22 @@ var K = {
     toggleAnimation: function()
     {
         if (K.animated === false) {
-            K.startAnimation();
+            K.restartAnimation();
         } else {
             K.stopAnimation();
         }
     },
 
-    startAnimation : function()
+    restartAnimation : function()
     {
+        K.stopAnimation();
+
         if (K.animated === false) {
             K.animated = true;
             $(".kal_cont .ksc").animate({
-                'backgroundPositionY': K.animation.speed
+                'backgroundPositionY': K.animation.direction + K.animation.speed
             }, {
-                duration: 7500000,
+                duration: 7500000, // or (K.animation.speed * 25) for a constant speed
                 easing: 'linear',
                 done: function() {
                     K.animated = false;
