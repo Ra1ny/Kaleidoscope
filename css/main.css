@@ -37,7 +37,7 @@ body {
 #controls {
     position: absolute;
     right: 0; bottom: 0;
-    z-index: 50; padding: 15px 0 0;
+    z-index: 50; padding: 15pt 0 0;
     background: rgba(255, 255, 255, .9);
     border-radius: 5px 0 0 0; border: solid #666;
     border-width: 1px 0 0 1px;
@@ -49,7 +49,7 @@ body {
     right: 0; top: 0;
     font-weight: bold;
     background: #e8e8e8;
-    padding: 0 5px;
+    padding: 0 5pt;
     border-radius: 0 0 0 4px;
     cursor: pointer; z-index: 51;
 }
