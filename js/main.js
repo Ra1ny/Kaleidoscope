@@ -15,7 +15,7 @@
         $(this).on('mousemove', function(e)
         {
             if (K.animated === false)
-                $(".kal_cont .ksc").css({backgroundPosition: e.pageX+"px "+e.pageY+"px"});
+                $(".kal_cont .ksc").css({backgroundPositionX: e.pageX+"px"});
         });
 
         var $path = $('#path'),
@@ -49,6 +49,20 @@
 
 var K = {};
 K.animated = false;
+K.animation = {
+    direction : '+=',
+    speed : '+=300000'
+};
+
+
+K.toggleDirection = function()
+{
+    if (K.animation.direction === '+=') {
+        K.animation.direction = '-=';
+    } else {
+        K.animation.direction = '+=';
+    }
+}
 
 K.toggleAnimation = function()
 {
@@ -64,12 +78,12 @@ K.startAnimation = function()
     if (K.animated === false) {
         K.animated = true;
         $(".kal_cont .ksc").animate({
-            'backgroundPositionY': '+=2500'
+            'backgroundPositionY': K.animation.speed
         }, {
-            duration: 60000,
+            duration: 7500000,
             easing: 'linear',
             done: function() {
-                K.enableAnimation();
+//                K.enableAnimation();
                 K.animated = false;
             }
         });
