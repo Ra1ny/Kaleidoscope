@@ -40,7 +40,7 @@
         });
 
         // Click to animate, click again to stop
-        $(this).on('click', function(e) {
+        $('#container').on('click', function(e) {
             K.toggleAnimation();
         });
 
@@ -107,8 +107,12 @@ var K = {
     // Resize kaleidoscope to fit the window
     resizeCanvas : function ()
     {
-        var maxHeight = $(window).height();
-        $('.kal_main').height(maxHeight);
+        var maxHeight = $(window).height(),
+            maxWidth = $(window).width();
+        $('.kal_cont').css({
+            height : maxWidth,
+            top : maxWidth / 2 * -1 + (maxHeight / 2)
+        });
     },
 
     // Change background image
