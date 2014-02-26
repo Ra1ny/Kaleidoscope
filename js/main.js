@@ -100,13 +100,13 @@ K.resizeCanvas = function ()
 {
     var maxHeight = $(window).height();
     $('.kal_main').height(maxHeight);
-}
+};
 
 // Change background image
 K.changeBackground = function(path)
 {
     $('.kal_cont .ksc').css({"background-image": 'url('+path+')'});
-}
+};
 
 // Generate kaleidoscope layout with number of "slices"
 K.generateLayout = function(numberOfElements)
@@ -137,4 +137,4 @@ K.generateLayout = function(numberOfElements)
 
     // Move slices into correct positions
     $('.kal_cont .ksc').css({'-webkit-transform' : 'rotateZ('+degreeOffset+'deg)'});
-}
+};

@@ -1,6 +1,5 @@
 body {
     background: #000;
-    font-family: Verdana, Helvetica, Arial, sans-serif;
     margin: 0; padding: 0
 }
 
@@ -28,8 +27,7 @@ body {
     /*Anti-aliasing for Chrome: http://stackoverflow.com/questions/5078186/webkit-transform-rotate-pixelated-images-in-chrome */
     /*-webkit-backface-visibility: hidden;*/
 
-    -webkit-transform-style: preserve-3d;
-    /*-webkit-transform: rotateZ(2deg);*/
+    transform-style: preserve-3d;
 }
 
 .kal_cont .ksc {
@@ -45,8 +43,11 @@ body {
 #controls {
     position: absolute;
     right: 0; bottom: 0;
-    background: rgba(255, 255, 255, .8);
     z-index: 99; padding: 0;
+}
+
+#controls .row {
+    background: rgba(255, 255, 255, .9);
 }
 
 #controls #path {width: 300px;}
