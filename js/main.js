@@ -65,13 +65,13 @@ var K = {
         {
             path : 'patterns/pic2.jpg',
             positions : [
-                1300
+                1300, 361, 454, 589
             ]
         },
         {
             path : 'patterns/pic.jpg',
             positions : [
-                867, 286
+                867, 286, 386, 106
             ]
         }
     ],
