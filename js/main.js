@@ -7,6 +7,7 @@
     @TODO: Add random X change
     @TODO: Add scroll wheel or keys X change
     @TODO: Rotational offset
+    @TODO: Add number of slices to presets
 
 */
 
@@ -44,7 +45,7 @@
     });
 
     $('#controls input').on('blur', function() {
-        $('#controls').toggleClass('hidden');
+        $('#controls').addClass('hidden');
     });
 
     // Click to animate, click again to stop

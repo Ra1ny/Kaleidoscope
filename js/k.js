@@ -42,8 +42,13 @@ var K = {
         }
         ,{
             path : 'patterns/pic5.jpg',
+            defaultSlices: 30,
             positions : [
-                419
+                419, 591, 512, 921, 106,
+                {
+                    pos: 106,
+                    slices: 25
+                }
             ]
         }
     ],
@@ -58,9 +63,21 @@ var K = {
     setRandomBackground : function()
     {
         var image = this.pickRandomProperty(this.presetImages),
-            position = this.pickRandomProperty(this.presetImages[image].positions),
-            imagePath = this.presetImages[image].path,
-            xPosition = this.presetImages[image].positions[position];
+            selectedImage = this.presetImages[image],
+            position = this.pickRandomProperty(selectedImage.positions),
+            imagePath = selectedImage.path,
+            xPosition = selectedImage.positions[position];
+
+        // @TODO: Improve the way this works
+        if (typeof xPosition == "object")
+        { // if custom slices is set
+            this.generateLayout(xPosition.slices);
+            xPosition = xPosition.pos;
+        }
+        else if (selectedImage.hasOwnProperty('defaultSlices'))
+        { // if defaultSlices is set
+            this.generateLayout(selectedImage.defaultSlices);
+        }
 
         this.changeBackground(imagePath);
         this.setPositionX(xPosition);
