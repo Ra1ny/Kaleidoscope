@@ -4,6 +4,8 @@
     @TODO: Add hash tag links
     @TODO: Allow imgur ids as images
     @TODO: Fix compatibility issues
+    @TODO: Add random X change
+    @TODO: Add scroll wheel or keys X change
 
 */
 
@@ -44,20 +46,68 @@
         });
 
         K.init();
-
     });
 
 })(jQuery);
 
 var K = {
 
-    mouseControl: true,
+    mouseControl: false,
     $sliceElements : $('#kContainer .ksc'),
+
+    presetImages : [
+        {
+            path : 'patterns/pic1.jpg',
+            positions : [
+                500, 220, 516, 610
+            ]
+        },
+        {
+            path : 'patterns/pic2.jpg',
+            positions : [
+                1300
+            ]
+        },
+        {
+            path : 'patterns/pic.jpg',
+            positions : [
+                867, 286
+            ]
+        }
+    ],
 
     init : function()
     {
         this.resizeCanvas();
         this.generateLayout(15);
+        this.setRandomBackground();
+    },
+
+    setRandomBackground : function()
+    {
+        var image = this.pickRandomProperty(this.presetImages),
+            position = this.pickRandomProperty(this.presetImages[image].positions),
+            imagePath = this.presetImages[image].path,
+            xPosition = this.presetImages[image].positions[position];
+
+        this.changeBackground(imagePath);
+        this.setPositionX(xPosition);
+    },
+
+    setPositionX : function (position)
+    {
+        K.$sliceElements.css({backgroundPositionX: position+"px"});
+    },
+
+    // http://stackoverflow.com/a/2532251/1017933
+    pickRandomProperty : function (obj)
+    {
+        var result;
+        var count = 0;
+        for (var prop in obj)
+            if (Math.random() < 1/++count)
+                result = prop;
+        return result;
     },
 
     toggleMouse: function() {
@@ -88,6 +138,8 @@ var K = {
     changeBackground : function(path)
     {
         this.$sliceElements.css({"background-image": 'url('+path+')'});
+
+        $('#path').val(path);
     },
 
     // Generate kaleidoscope layout with number of "slices"
