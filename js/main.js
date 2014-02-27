@@ -1,8 +1,8 @@
 /*
 
     @TODO: Save settings to cookies
-    @TODO: Switch to angular?
     @TODO: Add hash tag links
+    @TODO: Allow imgur ids as images
 
 */
 
@@ -11,16 +11,17 @@
     // Technically "ready" isn't needed, but it I'll get round it later
     $(document).ready(function() {
 
-        $(this).on('mousemove', function(e)
-        {
-            if (K.mouseControl === true)
-                $(".kal_cont .ksc").css({backgroundPositionX: e.pageX+"px"});
-        });
-
         var $path = $('#path'),
             $slices = $('#slices');
 
-        $path.on('change', function() {
+        $(this).on('mousemove', function(e)
+        {
+            // @TODO: Figure out why cached selector doesn't work
+            if (K.mouseControl === true)
+                $('#kContainer .ksc').css({backgroundPositionX: e.pageX+"px"});
+        });
+
+        $path.on('change keyup', function() {
             K.changeBackground($path.val());
         });
 
@@ -68,9 +69,12 @@ var K = {
         var maxHeight = $(window).height(),
             maxWidth = $(window).width();
         //noinspection JSSuspiciousNameCombination
-        $('.kal_cont').css({
-            height : maxWidth,
+        $('#kContainer').css({
+            height : maxWidth, // it's a circle shape, height is width
             top : maxWidth / 2 * -1 + (maxHeight / 2)
+        });
+        $('#kWrapper').css({
+            height: maxHeight
         });
     },
 

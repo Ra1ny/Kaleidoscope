@@ -3,14 +3,18 @@ body {
     margin: 0; padding: 0
 }
 
-.kal_cont {
+#kWrapper {
+    overflow: hidden;
+}
+
+#kContainer {
     height: 140%;
     top: -20%;
     position: relative; margin: auto;
     overflow: hidden;
 }
 
-.kal_cont .ks {
+#kContainer .ks {
     transform-origin: right top;
     width: 50%; height: 50%;
     position: absolute;
@@ -18,12 +22,12 @@ body {
     z-index: 10; overflow: hidden;
 }
 
-.kal_cont .ksc, .kal_cont .ks {
+#kContainer .ksc, #kContainer .ks {
     /*Anti-aliasing for Chrome: http://stackoverflow.com/questions/5078186/webkit-transform-rotate-pixelated-images-in-chrome */
     transform-style: preserve-3d;
 }
 
-.kal_cont .ksc {
+#kContainer .ksc {
     height: 100%; width: 100%;
     transform: rotate(30deg);
     position: relative;
