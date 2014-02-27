@@ -31,6 +31,13 @@ body {
     left: 100%; top: 0;
     background-image: url(../patterns/pic2.jpg);
     background-position-x: 1300px;
+
+    animation: moveBackground 750000s linear infinite; /* 8 days, 16 hours and 18 minutes */
+}
+
+@keyframes moveBackground {
+    0% { background-position-y: 300px; }
+    100% { background-position-y: 20000000px; }
 }
 
 /*************** Control Panel *******************/
@@ -48,8 +55,12 @@ body {
     position: absolute;
     right: 0; top: 0;
     font-weight: bold;
-    background: #e8e8e8;
+    background: rgba(255,255,255,.5);
     padding: 0 5pt;
     border-radius: 0 0 0 4px;
     cursor: pointer; z-index: 51;
+}
+
+#toggleControls:hover {
+    background: rgba(255,255,255,.9);
 }

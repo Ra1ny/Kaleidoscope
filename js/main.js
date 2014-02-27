@@ -3,9 +3,6 @@
     @TODO: Save settings to cookies
     @TODO: Switch to angular?
     @TODO: Add hash tag links
-    @TODO: Concept - Animation speed varies the further mouse pointer is from centre OR
-    @TODO: Concept - Animation speed varies with scroll wheel (Check solutions for mobiles as well)
-    @TODO: Concept - Constant animation, alter X position with scroll wheel and/or arrow keys and/or controls
 
 */
 
@@ -16,7 +13,7 @@
 
         $(this).on('mousemove', function(e)
         {
-            if (K.animated === false)
+            if (K.mouseControl === true)
                 $(".kal_cont .ksc").css({backgroundPositionX: e.pageX+"px"});
         });
 
@@ -27,10 +24,9 @@
             K.changeBackground($path.val());
         });
 
-        $slices.on('change', function() {
+        $slices.on('change keyup', function() {
             K.generateLayout($slices.val());
             K.changeBackground($path.val());
-            K.restartAnimation();
         });
 
         $(window).on('resize', function() {
@@ -42,13 +38,8 @@
         });
 
         // Click to animate, click again to stop
-        $('#kContainer').on('click', function(e) {
-            K.toggleAnimation();
-        });
-
-        $('#reverse').on('click', function() {
-            K.toggleDirection();
-            K.restartAnimation();
+        $('#kContainer').on('click', function() {
+            K.toggleMouse();
         });
 
         K.init();
@@ -59,58 +50,16 @@
 
 var K = {
 
-    animated: false,
-    animation: {
-        direction : '+=',
-        speed : '300000'
-    },
+    mouseControl: true,
 
     init : function()
     {
         this.resizeCanvas();
         this.generateLayout(14);
-        this.restartAnimation();
     },
 
-    toggleDirection: function()
-    {
-        if (K.animation.direction === '+=') {
-            K.animation.direction = '-=';
-        } else {
-            K.animation.direction = '+=';
-        }
-    },
-
-    toggleAnimation: function()
-    {
-        if (K.animated === false) {
-            K.restartAnimation();
-        } else {
-            K.stopAnimation();
-        }
-    },
-
-    restartAnimation : function()
-    {
-        K.stopAnimation();
-
-        if (K.animated === false) {
-            K.animated = true;
-            $(".kal_cont .ksc").animate({
-                'backgroundPositionY': K.animation.direction + K.animation.speed
-            }, {
-                duration: 7500000, // or (K.animation.speed * 25) for a constant speed
-                easing: 'linear',
-                done: function() {
-                    K.animated = false;
-                }
-            });
-        }
-    },
-
-    stopAnimation : function() {
-        $(".kal_cont .ksc").stop();
-        K.animated = false;
+    toggleMouse: function() {
+        this.mouseControl = this.mouseControl === false;
     },
 
     // Resize kaleidoscope to fit the window
@@ -118,6 +67,7 @@ var K = {
     {
         var maxHeight = $(window).height(),
             maxWidth = $(window).width();
+        //noinspection JSSuspiciousNameCombination
         $('.kal_cont').css({
             height : maxWidth,
             top : maxWidth / 2 * -1 + (maxHeight / 2)
