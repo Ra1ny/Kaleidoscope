@@ -40,6 +40,12 @@ var K = {
                 667, 94
             ]
         }
+        ,{
+            path : 'patterns/pic5.jpg',
+            positions : [
+                419
+            ]
+        }
     ],
 
     init : function()
