@@ -71,6 +71,12 @@ var K = {
             ]
         },
         {
+            path : 'patterns/pic3.jpg',
+            positions : [
+                1198, 389, 827, 538
+            ]
+        },
+        {
             path : 'patterns/pic.jpg',
             positions : [
                 867, 286, 386, 106
