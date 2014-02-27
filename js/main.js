@@ -6,6 +6,7 @@
     @TODO: Fix compatibility issues
     @TODO: Add random X change
     @TODO: Add scroll wheel or keys X change
+    @TODO: Rotational offset
 
 */
 
@@ -54,6 +55,7 @@ var K = {
 
     mouseControl: false,
     $sliceElements : $('#kContainer .ksc'),
+    browserPrefix: $('html').attr('class').trim(),
 
     presetImages : [
         {
@@ -154,7 +156,7 @@ var K = {
                 rotate = degreeOffset * (x - (x%2) - 1),
                 classes = ['ks', 'kSlice', elClass, 's'+x];
 
-            var elStyle = '-webkit-transform: rotateZ('+rotate+'deg)';
+            var elStyle = this.browserPrefix + 'transform: rotateZ('+rotate+'deg)';
 
             // HTML generation
             html.push('<div class="'+classes.join(" ")+'" style="'+elStyle+'"><div class="ksc"></div></div>');
