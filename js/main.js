@@ -12,37 +12,46 @@
 
 (function($) {
 
-        var $path = $('#path'),
-            $slices = $('#slices');
+    var $path = $('#path'),
+        $slices = $('#slices');
 
-        $(this).on('mousemove', function(e)
-        {
-            if (K.mouseControl === true)
-                K.$sliceElements.css({backgroundPositionX: e.pageX+"px"});
-        });
+    $(this).on('mousemove', function(e)
+    {
+        if (K.mouseControl === true)
+            K.$sliceElements.css({backgroundPositionX: e.pageX+"px"});
+    });
 
-        $path.on('change keyup', function() {
-            K.changeBackground($path.val());
-        });
+    $path.on('change keyup', function() {
+        K.changeBackground($path.val());
+    });
 
-        $slices.on('change keyup', function() {
-            K.generateLayout($slices.val());
-            K.changeBackground($path.val());
-        });
+    $path.on('click', function() {
+        this.focus();
+        this.select()
+    });
 
-        $(window).on('resize', function() {
-            K.resizeCanvas();
-        });
+    $slices.on('change keyup', function() {
+        K.generateLayout($slices.val());
+        K.changeBackground($path.val());
+    });
 
-        $('#toggleControls').on('click', function() {
-            $('#controls').toggleClass('hidden');
-        });
+    $(window).on('resize', function() {
+        K.resizeCanvas();
+    });
 
-        // Click to animate, click again to stop
-        $('#kContainer').on('click', function() {
-            K.toggleMouse();
-        });
+    $('#toggleControls').on('click', function() {
+        $('#controls').toggleClass('hidden');
+    });
 
-        K.init();
+    $('#controls input').on('blur', function() {
+        $('#controls').toggleClass('hidden');
+    });
+
+    // Click to animate, click again to stop
+    $('#kContainer').on('click', function() {
+        K.toggleMouse();
+    });
+
+    K.init();
 
 })(jQuery);

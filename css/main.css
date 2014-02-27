@@ -35,6 +35,7 @@ body {
     left: 100%; top: 0;
     background-image: url(../patterns/pic2.jpg);
     background-position-x: 1300px;
+    background-color: #fff;
 
     animation: moveBackground 750000s linear infinite; /* 8 days, 16 hours and 18 minutes */
 }

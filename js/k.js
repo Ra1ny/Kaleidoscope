@@ -15,23 +15,29 @@ var K = {
             positions : [
                 500, 220, 516, 610
             ]
-        },
-        {
+        }
+        ,{
             path : 'patterns/pic2.jpg',
             positions : [
                 1300, 361, 454, 589
             ]
-        },
-        {
+        }
+        ,{
             path : 'patterns/pic3.jpg',
             positions : [
-                1198, 389, 827, 538, 173
+                1198, 389, 827, 538, 173, 126
             ]
-        },
-        {
+        }
+        ,{
             path : 'patterns/pic.jpg',
             positions : [
                 867, 286, 386, 106
+            ]
+        }
+        ,{
+            path : 'patterns/pic4.jpg',
+            positions : [
+                667, 94
             ]
         }
     ],
