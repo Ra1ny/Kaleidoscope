@@ -3,6 +3,7 @@
     @TODO: Save settings to cookies
     @TODO: Add hash tag links
     @TODO: Allow imgur ids as images
+    @TODO: Fix compatibility issues
 
 */
 
@@ -16,9 +17,8 @@
 
         $(this).on('mousemove', function(e)
         {
-            // @TODO: Figure out why cached selector doesn't work
             if (K.mouseControl === true)
-                $('#kContainer .ksc').css({backgroundPositionX: e.pageX+"px"});
+                K.$sliceElements.css({backgroundPositionX: e.pageX+"px"});
         });
 
         $path.on('change keyup', function() {
@@ -52,11 +52,12 @@
 var K = {
 
     mouseControl: true,
+    $sliceElements : $('#kContainer .ksc'),
 
     init : function()
     {
         this.resizeCanvas();
-        this.generateLayout(14);
+        this.generateLayout(15);
     },
 
     toggleMouse: function() {
@@ -78,10 +79,15 @@ var K = {
         });
     },
 
+    refreshSlicesSelector: function()
+    {
+        this.$sliceElements = $('#kContainer .ksc');
+    },
+
     // Change background image
     changeBackground : function(path)
     {
-        $('.kal_cont .ksc').css({"background-image": 'url('+path+')'});
+        this.$sliceElements.css({"background-image": 'url('+path+')'});
     },
 
     // Generate kaleidoscope layout with number of "slices"
@@ -105,6 +111,8 @@ var K = {
         // Populate the container
         document.getElementById('kContainer').innerHTML = html.join('');
 
+        this.refreshSlicesSelector();
+
         // Adding mirror effect to every other slice
         $('.ks.even').each(function() {
             var style = $(this).attr('style');
@@ -112,6 +120,6 @@ var K = {
         });
 
         // Move slices into correct positions
-        $('.kal_cont .ksc').css({'-webkit-transform' : 'rotateZ('+degreeOffset+'deg)'});
+        this.$sliceElements.css({'transform' : 'rotateZ('+degreeOffset+'deg)'});
     }
 };

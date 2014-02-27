@@ -41,7 +41,7 @@ body {
 
 @keyframes moveBackground {
     0% { background-position-y: 300px; }
-    100% { background-position-y: 20000000px; }
+    100% { background-position-y: 18750000px; }
 }
 
 /*************** Control Panel *******************/
